@@ -1,0 +1,18 @@
+:root {
+    --small-card-size: 10em;
+}
+
+.quiz_small_card {
+    background: rgba(132, 0, 255, 0.5);
+    border: solid rgba(132, 0, 255, 0.75) 5px;
+    border-radius: 10px;
+    width: var(--small-card-size);
+    height: var(--small-card-size);
+}
+
+#quiz_board {
+    flex-wrap: wrap;
+    gap: 3em;
+    display: flex;
+    margin: 3em
+}
