@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import pl.ryder.quizerdemo.properties.CommonWebProperties;
-import pl.ryder.quizerdemo.quiz.QuizRepository;
+import pl.ryder.quizerdemo.quiz.quiz.QuizRepository;
 
 @Controller
 @AllArgsConstructor

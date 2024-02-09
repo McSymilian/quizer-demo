@@ -1,24 +1,12 @@
-class Quiz {
-    id = 0;
-    title = "";
-    questions = [];
-    constructor(json) {
-        this.id = json.id
-        this.title = json.title
-        this.questions = json.questions
-    }
-}
 
 function reload() {
     fetch("http://localhost:8080/api")
         .then(response => {return response.json()})
-        .then(response => {
-            let quizzes = []
-            for (let i = 0; i < response.quizzes.length; i++)
-                quizzes.push(new Quiz(response.quizzes[i]))
+        .then(quizzes => {
 
-            return quizzes
-        }).then(quizzes => {
+            let board = document.getElementById("quiz_board")
+            for (let boardElement of board.children) board.removeChild(boardElement)
+
             for (let i = 0; i < quizzes.length; i++) {
                 document.getElementById("quiz_board")
                     .appendChild(generateSmallQuizCard(quizzes[i]))
@@ -27,19 +15,25 @@ function reload() {
 }
 
 function generateSmallQuizCard(quiz) {
+    let title = document.createElement("div")
+    title.innerText = quiz.title
+    title.classList.add("inner-text")
+
+    let image = document.createElement("div")
+    image.classList.add("background-image")
+    image.src = quiz.imageUrl
+
+
     let card = document.createElement("div")
-    card.innerText = quiz.title
+    card.classList.add("quiz_card")
     card.classList.add("quiz_small_card")
-    card.onclick
+    card.appendChild(title)
+    card.onclick  = () => {}
+
     return card
 }
 
-function setQuizOnMain(contentDiv) {
-
-}
-
-window.onload = function() {
+window.onload = ()=> {
     reload()
-
     document.getElementById("homeButton").onclick = reload;
 }

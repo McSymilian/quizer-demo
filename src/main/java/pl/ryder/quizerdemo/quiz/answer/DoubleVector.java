@@ -1,21 +1,16 @@
-package pl.ryder.quizerdemo.quiz;
+package pl.ryder.quizerdemo.quiz.answer;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+
+import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Embeddable
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class DoubleVector {
-    @Id
-    @GeneratedValue
-    private Long id;
-
     private Double x;
 
     private Double y;

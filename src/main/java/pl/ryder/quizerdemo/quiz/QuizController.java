@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.ryder.quizerdemo.quiz.quiz.Quiz;
+import pl.ryder.quizerdemo.quiz.quiz.QuizRepository;
 
 import java.util.stream.StreamSupport;
 
@@ -15,12 +17,12 @@ public class QuizController {
     private final QuizRepository quizRepository;
 
     @GetMapping(produces = "application/json")
-    public Quizzes getAllQuizzes() {
-        return new Quizzes(StreamSupport.stream(quizRepository
+    public Quiz[] getAllQuizzes() {
+        return StreamSupport.stream(quizRepository
                                 .findAll()
                                 .spliterator(),
                         false)
-                .toArray(Quiz[]::new));
+                .toArray(Quiz[]::new);
 
     }
 
